@@ -1,7 +1,7 @@
 -- 
 -- Roll No: 58
 -- Name: SWAFWANA SHERI K P
--- Program: 
+-- Program: Sample program 2
 -- 
 
 
@@ -14,11 +14,6 @@ alter table bookissues add constraint bookissues_pkey primary key(bookid,student
 alter table bookissues add constraint bookissues_fkey_bookid foreign key(bookid) references books(bookid);
 alter table bookissues add constraint bookissues_fkey_studentid foreign key(studentid) referenc
 es students(studentid);
-
-
-
-
-
 
 
 
