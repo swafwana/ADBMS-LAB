@@ -37,7 +37,10 @@ create table departments(dno int primary key,dname varchar(50) not null);
 --
 insert into departments values(1,'MCA');
 
-
+--
+-- Dumping data for table bookissues
+--
+insert into bookissues (bookid, studentid, issue_date, return_date, fine) values (2, 101, '2025-02-10', null, 0.00), (1, 102, '2025-02-12', '2025-02-18', 0.00);
 
 --
 -- SQl Query Statements
