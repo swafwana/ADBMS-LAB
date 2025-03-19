@@ -42,7 +42,7 @@ create table departments(dno int primary key,dname varchar(50) not null);
 --
 insert into departments values(1,'MCA');
 
--- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
 
 --
 -- SQl Query Statements
@@ -63,5 +63,4 @@ select students.id, students.sname from students join bookissues on students.id=
 --Q13. List the books whose price greater than rupees 600 (include attributes bookid, title)
 select bookid,title from books where price>%s;
 
--- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
--- -----Question number should be commented---------------#This line may be removed in the actual file
+
