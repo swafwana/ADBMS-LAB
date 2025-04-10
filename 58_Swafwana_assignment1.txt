@@ -1,0 +1,40 @@
+-- 
+-- Roll No: 58
+-- Name: SWAFWANA SHERI K P
+-- Program: Assignment 1
+-- 
+
+
+--
+-- Table structure for table books
+--
+create table books(accno int unique auto_increment primary key, title varchar(100) unique,author varchar(50) not null,price float(6,2), type enum('lending','refe 
+rence'), availability enum('yes','no'), publisherid int,constraint books_fkey_publisherid foreign key(publisherid) references publishers(publisherid));
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+--
+-- Table structure for table publishers
+--
+create table publishers(publisherid int auto_increment primary key,name varchar(50) unique not null,address varchar(100));
+
+--
+-- Table structure for table issues
+--
+create table issues(issueid int auto_increment primary key,memberid int,accno int,issuedate date,duedate date,constraint issues_fkey_memberid foreign key(memberid) references members(memberid),constraint issues_fkey_accno foreign key(accno) references books(accno));
+--
+-- Table structure for table returns
+--
+create table returns(returnid int auto_increment primary key, memberid int, accno int,returndate date,fine int default 0 check (fine>=0),constraint returns_fkey_memberid foreign key(memberid) references members(memberid),constraint returns_fkey_accno foreign key(accno) references books(accno));
+--
+-- Dumping data for table publishers
+--
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+insert into publishers (name,address) values('James','East Villa'),('Jacob','West Villa'),('Jery','Rose Villa'),('Robin','Lavender Villa'),('Henry','Caven Garden');
+--
+-- SQl Query Statements
+--
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
+
