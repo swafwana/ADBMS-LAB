@@ -1,0 +1,8 @@
+create table books(accno int unique auto_increment primary key, title varchar(100) unique,author varchar(50) not null,price float(4,2), type enum('lending','refe
+rence'), availability enum('yes','no'), publisherid int);
+create table publishers(publisherid int auto_increment primary key,name varchar(50) unique not null,address varchar(100));
+create table members(memberid int auto_increment primary key,name varchar(50) not null,address varchar(100),type enum('staff','student'));
+create table issues(issueid int auto_increment primary key,memberid int,accno int,issuedate date,duedate date);
+create table returns(returnid int auto_increment primary key, memberid int, accno int,returndate date,fine int default 0 check (fine>=0));
+
+
