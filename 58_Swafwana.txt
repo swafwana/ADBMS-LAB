@@ -4,5 +4,12 @@ create table publishers(publisherid int auto_increment primary key,name varchar(
 create table members(memberid int auto_increment primary key,name varchar(50) not null,address varchar(100),type enum('staff','student'));
 create table issues(issueid int auto_increment primary key,memberid int,accno int,issuedate date,duedate date);
 create table returns(returnid int auto_increment primary key, memberid int, accno int,returndate date,fine int default 0 check (fine>=0));
+ INSERT INTO returns (memberid, accno, returndate, fine)
+    -> VALUES
+    ->     (1, 1, '2025-04-10', 0),
+    ->     (2, 2, '2025-04-12', 5),
+    ->     (3, 3, '2025-04-14', 0),
+    ->     (4, 4, '2025-04-15', 2),
+    ->     (1, 5, '2025-04-16', 0);
 
 
