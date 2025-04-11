@@ -8,8 +8,7 @@
 --
 -- Table structure for table books
 --
-create table books(accno int unique auto_increment primary key, title varchar(100) unique,author varchar(50) not null,price float(6,2), type enum('lending','refe 
-rence'), availability enum('yes','no'), publisherid int,constraint books_fkey_publisherid foreign key(publisherid) references publishers(publisherid));
+create table books(accno int unique auto_increment primary key, title varchar(100) unique,author varchar(50) not null,price float(6,2), type enum('lending','reference'), availability enum('yes','no'), publisherid int,constraint books_fkey_publisherid foreign key(publisherid) references publishers(publisherid));
 -- ---------create/alter statement commands----------- # This line may be removed in the actual file
 
 --
