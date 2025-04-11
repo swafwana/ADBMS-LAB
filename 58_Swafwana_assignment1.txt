@@ -44,7 +44,7 @@ INSERT INTO books (title, author, price, type, availability, publisherid) VALUES
 -- Dumping data for table members
 --
 
- INSERT INTO members (name, address, type) VALUES ('John Doe', '123 Elm Street, Cityville', 'staff'),('Jane Smith', '456 Oak Avenue, Townsville', 'student'),('Michael Brown', '789 Pine Road, Village', 'staff'),('Emily Davis', '101 Maple Lane, Countryside', 'student'),('David Wilson', '202 Cedar Boulevard, Suburbia', 'staff');
+INSERT INTO members (name, address, type) VALUES ('John Doe', '123 Elm Street, Cityville', 'staff'),('Jane Smith', '456 Oak Avenue, Townsville', 'student'),('Michael Brown', '789 Pine Road, Village', 'staff'),('Emily Davis', '101 Maple Lane, Countryside', 'student'),('David Wilson', '202 Cedar Boulevard, Suburbia', 'staff');
 
 
 --
@@ -57,6 +57,9 @@ INSERT INTO issues (memberid, accno, issuedate, duedate) VALUES (1, 1, '2025-04-
 -- Dumping data for table returns
 --
 INSERT INTO returns (memberid, accno, returndate, fine) VALUES (1, 1, '2025-04-14', 0),(2, 3, '2025-04-16', 0),3, 2, '2025-04-20', 50),(4, 4, '2025-04-18', 0),(5, 5, '2025-04-21', 30);
+
+
+
 
 
 
