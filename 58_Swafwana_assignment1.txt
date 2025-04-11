@@ -55,7 +55,8 @@ INSERT INTO issues (memberid, accno, issuedate, duedate) VALUES (1, 1, '2025-04-
 --
 -- Dumping data for table returns
 --
-INSERT INTO returns (memberid, accno, returndate, fine) VALUES (1, 1, '2025-04-14', 0),(2, 3, '2025-04-16', 0),3, 2, '2025-04-20', 50),(4, 4, '2025-04-18', 0),(5, 5, '2025-04-21', 30);
+INSERT INTO returns (memberid, accno, returndate, fine) VALUES (1, 1, '2025-04-14', 0),(2, 3, '2025-04-16', 0),(3, 2, '2025-04-20', 50),(4, 4, '2025-04-18', 0),(5, 5, '2025-04-21', 30);
+
 
 
 
