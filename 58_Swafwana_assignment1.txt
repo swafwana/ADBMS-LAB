@@ -50,12 +50,13 @@ INSERT INTO books (title, author, price, type, availability, publisherid) VALUES
 --
 -- Dumping data for table issues
 --
-
+INSERT INTO issues (memberid, accno, issuedate, duedate) VALUES (1, 1, '2025-04-01', '2025-04-15'),(2, 3, '2025-04-02', '2025-04-16'),(3, 2, '2025-04-03', '2025-04-17'),(4, 4, '2025-04-04', '2025-04-18'),(5, 5, '2025-04-05', '2025-04-19');
 
 
 --
 -- Dumping data for table returns
 --
+INSERT INTO returns (memberid, accno, returndate, fine) VALUES (1, 1, '2025-04-14', 0),(2, 3, '2025-04-16', 0),3, 2, '2025-04-20', 50),(4, 4, '2025-04-18', 0),(5, 5, '2025-04-21', 30);
 
 
 
