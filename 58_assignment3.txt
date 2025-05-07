@@ -1,0 +1,48 @@
+-- 
+-- Roll No: 58
+-- Name: SWAFWANA SHERI K P
+-- Program: Practice Question III
+-- 
+
+
+--
+-- Table structure for table librarians
+--
+create table librarians(librarianid int Primary Key AUTO_INCREMENT,name varchar(50) NOT NULL,email varchar(100) unique NOT NULL,phone varchar(10) unique NOT NULL);
+
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+--
+-- Table structure for table bookissues
+--
+alter table bookissues add column librarianid int;
+alter table bookissues add constraint bookissues_fkey_librarianid foreign key(librarianid) references librarians(librarianid);
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+--
+-- Dumping data for table librarians
+--
+insert into librarians values(1,'John Smith','john.smith@example.com','9876543210'),(2,'Emma Brown','emma.brown@example.com','8765432109'),(3,'David Wilson','david.wilson@example.com', '7654321098'),(4,'Franklin','franklin@example.com','3445236778');
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file 
+
+--
+-- Dumping data for table bookissues
+--
+update bookissues set librarianid=1 where bookid=101 or bookid=102;
+update bookissues set librarianid=1 where bookid=103 or bookid=104;
+update bookissues set librarianid=1 where bookid=105 or bookid=106;
+-- --------insert/update statement commands----------- # This line may be removed in the actcual file
+
+--
+-- SQl Query Statements
+--
+--5. List all book issues with student and librarian details (include attributes studend name, title, librarian name)
+
+select students.name as student_name,title,librarians.name as librarian_name from students inner join bookissues on students.studentid=bookissues.studentid inner
+ join books on bookissues.bookid=books.bookid inner join librarians on bookissues.librarianid=librarians.librarianid;
+ 
+--6. Count the number of books issued by each librarian (include attributes librarianid, name, total_books_issued)
+
+--7. Find librarians who have not issued any books (include attributes librarianid, name)
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
