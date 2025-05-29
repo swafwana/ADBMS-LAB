@@ -1,0 +1,115 @@
+--
+-- Roll No: 58
+-- Name: SWAFWANA SHERI K P
+-- Program: Assignment-III
+--
+
+
+
+--
+-- Table structure for table <table_name>
+--
+
+-- ---------create/alter statement commands----------- # This line may be removed in the actual file
+
+
+
+--
+-- Dumping data for table <table_name>
+--
+
+-- --------insert/update statement commands----------- # This line may be removed in the actcual
+file
+
+
+
+--
+-- SQl Query Statements
+--
+
+-- 1. Create a MySQL view named "IssuedBooksDetails" that combines information about issued
+books, including the book title, member name, and issue date. Include columns for book title,
+member name, and issue date.
+
+CREATE VIEW IssuedBooksDetails AS
+SELECT books.title AS BookTitle, members.name AS MemberName, issues.issuedate AS
+IssueDate
+FROM issues
+INNER JOIN books ON issues.accno = books.accno
+INNER JOIN members ON issues.memberid = members.memberid;
+
+-- 2. Create a stored function in MySQL that calculates and returns the total fine amount for a
+given member based on their memberid.
+
+DELIMITER //
+CREATE FUNCTION CalculateFine(member_id INT) RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+  DECLARE total_fine DECIMAL(10,2);
+
+ SELECT IFNULL(SUM(DATEDIFF(CURDATE(), issuedate) * 2), 0)
+ INTO total_fine
+ FROM issues
+ WHERE memberid = member_id AND accno NOT IN (SELECT accno FROM returns
+WHERE memberid = member_id);
+
+  RETURN total_fine;
+END//
+DELIMITER ;
+
+-- 3. Create a MySQL stored procedure named "AddIssue" to facilitate issuing a book to a
+member. The procedure should take input parameters for the accession number of the book and
+the member ID of the member. It should insert to the Issues table with the new issue record,
+including the current date as the issue date. Use the built-in function CURDATE() to get the
+current date.
+
+DELIMITER //
+CREATE PROCEDURE AddIssue(IN book_accno INT, IN mem_id INT)
+BEGIN
+  INSERT INTO issues (accno, memberid, issuedate)
+  VALUES (book_accno, mem_id, CURDATE());
+
+  UPDATE books SET availability = 'no' WHERE accno = book_accno;
+END//
+DELIMITER ;
+
+-- 4. Create a stored procedure 'IsAvailable' which takes an accession number of a book as
+input and outputs a boolean value (TRUE/FALSE) on the availability of that book.
+
+DELIMITER //
+CREATE PROCEDURE IsAvailable(IN book_accno INT, OUT available BOOLEAN)
+BEGIN
+  DECLARE avail_status ENUM('yes', 'no');
+
+  SELECT availability INTO avail_status FROM books WHERE accno = book_accno;
+  SET available = (avail_status = 'yes');
+END//
+DELIMITER ;
+
+-- 5. Create a MySQL trigger named 'UpdateAvailabilityToNo' to update the availability of a book
+to "no" once that books is issued to some member.
+
+DELIMITER //
+CREATE TRIGGER UpdateAvailabilityToNo
+AFTER INSERT ON issues
+FOR EACH ROW
+BEGIN
+  UPDATE books SET availability = 'no' WHERE accno = NEW.accno;
+END//
+DELIMITER ;
+
+-- 6. Create a MySQL trigger named 'UpdateAvailabilityToYes' to update the availability of a
+book to "yes" once that books is returned to library.
+
+DELIMITER //
+CREATE TRIGGER UpdateAvailabilityToYes
+AFTER INSERT ON returns
+FOR EACH ROW
+BEGIN
+    UPDATE books SET availability = 'yes' WHERE accno = NEW.accno;
+END//
+DELIMITER ;
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in
+the actual file
+-- -----Question number should be commented---------------#This line may be removed in the
+actual file
